@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace ShoppingCart.Domain.Interfaces.Repositories
 {
-    public interface IProductRepository : IBaseRepository<Product>
+    public interface IProductRepository : IGenericRepository<Product>
     {
+        Task<Product?> GetById(int id);
+        Task<Product?> GetByGuid(Guid guid);
         Task<List<Product>> SearchByTerm(string term);
     }
 }

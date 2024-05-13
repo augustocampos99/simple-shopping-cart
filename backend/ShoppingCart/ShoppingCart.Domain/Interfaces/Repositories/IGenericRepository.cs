@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace ShoppingCart.Domain.Interfaces.Repositories
 {
-    public interface IBaseRepository<T> where T : class
+    public interface IGenericRepository<T> where T : class
     {
-        Task<T> GetById(int id);
-        Task<T> GetByGuid(Guid guid);
-        Task<IQueryable<T>> GetAll();
+        Task<IQueryable<T>> GetAll(int offset, int limit);
         Task<T> Create(T entity);
         Task<T> Update(T entity);
-        void Delete(T entity);
+        Task<int> Delete(T entity);
     }
 }
